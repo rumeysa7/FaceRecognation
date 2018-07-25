@@ -35,8 +35,51 @@ public class UserController {
         return "/user/kayitOl";
     }
 
+
+
+
+
+    @RequestMapping( value = "/addAlien",method = RequestMethod.GET )
+    public String addAlien()  {
+
+        return "/user/kayitOl";
+    }
+
+    @RequestMapping( value = "/addAlien",method = RequestMethod.POST )
+    public String postAlien(@RequestParam("firstname") String adi, @RequestParam("lastname") String soyad ,
+                            @RequestParam("file") MultipartFile file ) throws IOException {
+        User user = new User();
+        user.setname(adi);
+        user.setlastname(soyad);
+
+        byte[] fileContent = file.getBytes()    ;
+        user.setProfilePic(fileContent);
+        userRepository.save(user);
+        return "/user/kayitOl";
+    }
+
+
+
+
+
+    @RequestMapping(value = {"/lists"}, method = RequestMethod.GET)
+    public ModelAndView listAlien() {
+
+        ModelAndView model = new ModelAndView("/user/listele");
+
+        List<User> userList= new ArrayList<>();
+        userList = (List<User>) userRepository.findAll();
+
+        model.addObject("lists", userList);
+        return model;
+    }
+
+
+
+
+
     @RequestMapping(value = {"/profile/{id}"}, method = RequestMethod.GET)
-    public String deleteprofile(@PathVariable("id") int id, Model model) {
+    public String addPicture(@PathVariable("id") int id, Model model) {
 
         User user = userRepository.findUserById(id);
         String base64Encoded="";
@@ -56,40 +99,7 @@ public class UserController {
 
 
 
-    @RequestMapping( value = "/addAlien",method = RequestMethod.GET )
-    public String addAlien( ) throws IOException {
 
-        return "/user/kayitOl";
-    }
-
-    @RequestMapping( value = "/addAlien",method = RequestMethod.POST )
-    public String postAlien(@RequestParam("firstname") String adi, @RequestParam("lastname") String soyad ,
-                           @RequestParam("file") MultipartFile file ) throws IOException {
-        User user = new User();
-        user.setname(adi);
-        user.setlastname(soyad);
-
-        byte[] fileContent = file.getBytes()    ;
-        user.setProfilePic(fileContent);
-        userRepository.save(user);
-        List<User> userList = new ArrayList<>();
-        userList = (List<User>) userRepository.findAll();
-        return "/user/kayitOl";
-    }
-
-
-
-    @RequestMapping(value = {"/lists"}, method = RequestMethod.GET)
-    public ModelAndView listAlien() {
-
-        ModelAndView model = new ModelAndView("/user/listele");
-
-        List<User> userList= new ArrayList<>();
-        userList = (List<User>) userRepository.findAll();
-
-        model.addObject("lists", userList);
-        return model;
-    }
 
     @RequestMapping(value = {"/profile/{id}/delete"})
     public String deleteUser(@PathVariable("id") int id,Model model) {
@@ -98,8 +108,6 @@ public class UserController {
         List<User> userList = new ArrayList<>();
         userList = (List<User>) userRepository.findAll();
         model.addAttribute ("lists", userList);
-
-
         return "/user/listele";
     }
 

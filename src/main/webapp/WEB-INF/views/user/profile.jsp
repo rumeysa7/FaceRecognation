@@ -20,8 +20,7 @@
         <td>${user.name}</td>
         <td>${user.lastname}</td>
 
-
-        <img  alt="img" src="data:image/jpg;base64,${foto}" width="200" height="200"/>
+        <img alt="img" src="data:image/jpg;base64,${foto}" width="200" height="200"/>
     </tr>
 </table>
 </body>

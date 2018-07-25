@@ -24,37 +24,27 @@
 
 <h2 align="center"> Kayıt Ol</h2>
 
-<form method="post" action="/addAlien"align="center" enctype="multipart/form-data">
+<form method="post" action="/addAlien" align="center" enctype="multipart/form-data">
 
-
-
-    <div class="form-row">
-        <div class="col">
-            </br>  <input type="text" name="firstname" size="3" class="form-control" placeholder="AD"></br>
+    <div class="form-col">
+        <div class="row">
+            </br>  <input type="text" name="firstname" class="form-control" placeholder="AD"></br>
         </div>
-        <div class="col">
+        <div class="row">
             </br>  <input type="text" name="lastname" class="form-control" placeholder="SOYAD"></br>
         </div>
     </div>
-
-    <input type="file" name="file"></br>
-        <input type="submit" class="btn btn-primary"><br>
-    <input type="button" class="btn btn-success" value="listele" onclick="window.open('${contextPath}/lists',' width=400,height=400');"> <br>
-
-    <div>
-    </div>
-    <div>
-        <ul>
-            <li th:each="file : ${files}">
-                <a th:href="${file}" th:text="${file}" />
-            </li>
-        </ul>
-    </div>
+    </br>
+    <input type="file" name="file"></br><br>
+    <input type="submit" class="btn btn-primary"><br><br>
+    <input type="button" class="btn btn-success" value="Listele" onclick="location.href='${contextPath}/lists',' width=400,height=400'"> <br>
 
 </form>
 
     </div>
     <div class="col-2"></div>
-</div>
+    </div>
+
+
 </body>
 </html>
