@@ -14,11 +14,19 @@ public class User {
     private int id;
     private String name;
     private  String lastname;
+    private String email;
+    private String actCode;
+    private boolean valid = false;
+
 
     @Lob
     private byte[] profilePic;
 
-    public String getLastname() {
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
+
+    public String getlastname() {
         return lastname;
     }
 
@@ -50,12 +58,23 @@ public class User {
         this.profilePic = profilePic;
     }
 
+    public String getActCode() { return actCode; }
+
+    public void setActCode(String actCode) { this.actCode = actCode; }
+
+    public boolean isValid() { return valid; }
+
+    public void setValid(boolean valid) { this.valid = valid; }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", actCode='" + actCode + '\'' +
+                ", valid=" + valid +
                 ", profilePic=" + Arrays.toString(profilePic) +
                 '}';
     }

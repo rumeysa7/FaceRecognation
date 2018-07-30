@@ -7,20 +7,27 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="header.jsp"%>
 <html>
 <head>
     <title>Profile</title>
+
+
 </head>
 <body>
 
-<table>
+<table align="center">
 
     <tr href="/:${contextPath}/profile/${user.getid()}">
         <td>${user.getid()}</td>
         <td>${user.name}</td>
         <td>${user.lastname}</td>
+        <td>${user.email}</td>
 
+    <div align="center">
         <img alt="img" src="data:image/jpg;base64,${foto}" width="200" height="200"/>
+    </div>
+
     </tr>
 </table>
 </body>
