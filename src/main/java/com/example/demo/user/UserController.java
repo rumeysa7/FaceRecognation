@@ -3,16 +3,21 @@ package com.example.demo.user;
 import com.example.demo.util.EmailUtil;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.servlet.ServletContext;
 import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +25,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 import javax.mail.Session;
-
-
 
 
 
@@ -38,19 +41,20 @@ public class UserController {
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String register(Model model) {
         User user = new User();
-        return "/user/anaSayfa";
+        return "/admin/admin-home";
     }
 
 
     @RequestMapping(value = "/addAlien", method = RequestMethod.GET)
     public String addAlien() {
-
         return "/user/kayitOl";
     }
 
     @RequestMapping(value = "/addAlien", method = RequestMethod.POST)
-    public String postAlien(@RequestParam("firstname") String adi, @RequestParam("lastname") String soyad,
+    public String postAlien(@RequestParam("firstname") String adi,
+                            @RequestParam("lastname") String soyad,
                             @RequestParam("email") String mail,
+                            @RequestParam("password") String sifre,
                             @RequestParam("file") MultipartFile file) throws IOException {
 
 
@@ -60,13 +64,21 @@ public class UserController {
         temprorayUUID = UUID.randomUUID().toString();
 
         User user = new User();
-        user.setname(adi);
+        user.setUsername(adi);
         user.setlastname(soyad);
         user.setActCode(temprorayUUID);
         user.setEmail(mail);
 
+
+          user.setPassword(sifre);
+
         byte[] fileContent = file.getBytes();
         user.setProfilePic(fileContent);
+
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder() ;
+        String encodePass = passwordEncoder.encode(user.getPassword());
+    user.setPassword(encodePass);
+
         userRepository.save(user);
 
         String emailID = mail;
@@ -150,18 +162,34 @@ public class UserController {
 
 
     //http://www.localhost:1111/orders?actCode=7d0e5460-222f-412e-8fe3-4a1eec5bf31e
-    @RequestMapping(value = {"/orders"})
+    @RequestMapping(value = {"/orders"} , method = RequestMethod.GET)
     public String code(@RequestParam("actCode") String active) {
 
         User a= new User();
-        if(active == a.getActCode()){
 
-            a.setValid(true);
+            a = userRepository.findByActCode(active);
 
+            // equalsIgnoreCase() Metodu: Temel olarak girilen string türünde bir ifadenin bir
+            // başka string türünden ifade ile aynı olup olmadığını gösterir
+            if (!a.getActCode().equalsIgnoreCase("")) {
 
-        }
-        return "/user/listele";
+                a.setValid(true);
+                userRepository.save(a);
+            }
+        return "/login";
    }
+
+
+
+
+
+    /*@RequestMapping(value= {"/login"}, method = RequestMethod.POST)
+    public String logIn(@RequestParam("email") String mail, @RequestParam("password") String sifre){
+
+
+    }*/
+
+
+
+
 }
-
-

@@ -12,10 +12,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int id;
-    private String name;
+    private String username;
     private  String lastname;
     private String email;
     private String actCode;
+    private String password;
     private boolean valid = false;
 
 
@@ -42,12 +43,12 @@ public class User {
         this.id = id;
     }
 
-    public String getname() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setname(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public byte[] getProfilePic() {
@@ -66,14 +67,23 @@ public class User {
 
     public void setValid(boolean valid) { this.valid = valid; }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", actCode='" + actCode + '\'' +
+                ", password='" + password + '\'' +
                 ", valid=" + valid +
                 ", profilePic=" + Arrays.toString(profilePic) +
                 '}';

@@ -29,12 +29,15 @@
             </br>  <input type="email" name="email" class="form-control"  placeholder="E-MAIL"  style="width: 250px" style="height:250px" required="required"></br>
         </div>
         <div class="form-group">
+            </br>  <input type="text" name="password" class="form-control"  placeholder="SİFRE"  style="width: 250px" style="height:250px" required="required"></br>
+        </div>
+        <div class="form-group">
             </br><input type="file" name="file"  align="center"></br>
         </div>
     </div>
 
     </br><br><input type="submit" class="btn btn-primary"><br><br>
-
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 </div>
 

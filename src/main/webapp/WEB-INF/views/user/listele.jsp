@@ -21,7 +21,7 @@
         <th scope="col">AD</th>
         <th scope="col">SOYAD</th>
         <th scope="col">E-MAIL</th>
-        <th scope="col">ENABLED</th>
+        <th scope="col">SIFRE</th>
         <th scope="col">SIL</th>
         <th scope="col">PROFIL</th>
     </tr>
@@ -32,10 +32,10 @@
         <c:forEach var="listValue" items="${lists}">
             <tr>
                 <td>${listValue.getid()}</td>
-                <td>${listValue.name}</td>
+                <td>${listValue.username}</td>
                 <td>${listValue.lastname}</td>
                 <td>${listValue.email}</td>
-                <td>${listValue.valid}</td>
+                <td>${listValue.password}</td>
                 <td><button class="btn btn-danger" onclick="this.disabled= true; location.href='${contextPath}/profile/${listValue.getid()}/delete'">Delete</button></td>
                 <td><input type="button" class="btn btn-success" value="Profil" onclick="location.href='${contextPath}/profile/${listValue.getid()}'" ><br></td>
             </tr>
