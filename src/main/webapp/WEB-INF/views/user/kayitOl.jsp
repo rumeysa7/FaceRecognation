@@ -29,7 +29,7 @@
             </br>  <input type="email" name="email" class="form-control"  placeholder="E-MAIL"  style="width: 250px" style="height:250px" required="required"></br>
         </div>
         <div class="form-group">
-            </br>  <input type="text" name="password" class="form-control"  placeholder="SİFRE"  style="width: 250px" style="height:250px" required="required"></br>
+            </br>  <input type="password" name="password" class="form-control"  placeholder="SİFRE"  style="width: 250px" style="height:250px" required="required"></br>
         </div>
         <div class="form-group">
             </br><input type="file" name="file"  align="center"></br>

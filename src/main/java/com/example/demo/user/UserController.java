@@ -163,7 +163,7 @@ public class UserController {
     @RequestMapping(value = {"/orders"} , method = RequestMethod.GET)
     public String code(@RequestParam("actCode") String active) {
 
-        User a= new User();
+            User a= new User();
 
             a = userRepository.findByActCode(active);
 
@@ -176,18 +176,5 @@ public class UserController {
             }
         return "/login";
    }
-
-
-
-
-
-    /*@RequestMapping(value= {"/login"}, method = RequestMethod.POST)
-    public String logIn(@RequestParam("email") String mail, @RequestParam("password") String sifre){
-
-
-    }*/
-
-
-
 
 }
