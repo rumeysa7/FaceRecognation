@@ -38,10 +38,10 @@ public class UserController {
     @Autowired
     ServletContext appContext;
 
-    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
     public String register(Model model) {
         User user = new User();
-        return "/admin/admin-home";
+        return "/user/anaSayfa";
     }
 
 
@@ -68,9 +68,7 @@ public class UserController {
         user.setlastname(soyad);
         user.setActCode(temprorayUUID);
         user.setEmail(mail);
-
-
-          user.setPassword(sifre);
+        user.setPassword(sifre);
 
         byte[] fileContent = file.getBytes();
         user.setProfilePic(fileContent);

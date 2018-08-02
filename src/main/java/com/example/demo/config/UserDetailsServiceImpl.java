@@ -27,14 +27,11 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         Set<GrantedAuthority> grantedAuthorities = new HashSet();
 
         if(user.isValid()){
-            grantedAuthorities.add(new SimpleGrantedAuthority( "ADMIN"  ));
+            grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_ADMIN"  ));
         }
         else{
-            grantedAuthorities.add(new SimpleGrantedAuthority( "USER"  ));
+            grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_USER"  ));
         }
-        /*for (Role role : user.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }*/
 
 
 

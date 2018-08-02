@@ -27,6 +27,6 @@ public class AdminController {
     @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
     public String welcome(Model model)
     {
-        return "/admin/admin-home";
+        return "/user/admin-home";
     }
 }

@@ -8,10 +8,7 @@ import java.util.HashSet;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-    /*@Autowired
-    private RoleRepository roleRepository;*/
 
-    @SuppressWarnings("unchecked")
     public void save(User user) {
         user.setPassword(user.getPassword());
        // user.setRoles(new HashSet(roleRepository.findAll()));

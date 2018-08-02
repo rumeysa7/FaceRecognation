@@ -30,6 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 authorizeRequests().
                 antMatchers("/addAlien").permitAll().
                 antMatchers("/orders").permitAll().
+                antMatchers("/welcome").permitAll().
+                antMatchers("/lists").access("hasRole('ROLE_ADMIN')").
                 anyRequest().authenticated()
                 .and()
                 .formLogin()

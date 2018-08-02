@@ -22,7 +22,7 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li><a href="${contextPath}/">Ana Sayfa</a></li>
+            <li><a href="${contextPath}/welcome">Ana Sayfa</a></li>
             <li><a href="${contextPath}/addAlien">Kayıt Ol</a></li>
             <li><a href="${contextPath}/lists">Listele</a></li>
         </ul>
