@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/orders").permitAll().
                 antMatchers("/welcome").permitAll().
                 antMatchers("/profile/{id}/delete").access("hasRole('ROLE_YONETICI')").
-                antMatchers("/lists").access("hasRole('ROLE_YONETICI') or hasRole('ROLE_ADMIN')").
+                //antMatchers("/lists").access("hasRole('ROLE_YONETICI') or hasRole('ROLE_ADMIN')").
                 anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -47,8 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
         auth.authenticationProvider(authenticationProvider());
 
-        auth.inMemoryAuthentication()
-                .withUser("rumeysa").password("123456").authorities("ROLE_YONETICI");
+        //auth.inMemoryAuthentication()
+               // .withUser("rumeysa").password("123456").roles("ROLE_YONETICI");
 
 
 

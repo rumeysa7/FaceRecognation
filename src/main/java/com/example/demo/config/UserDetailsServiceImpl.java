@@ -24,6 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
 
+
         Set<GrantedAuthority> grantedAuthorities = new HashSet();
 
 
@@ -34,9 +35,9 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         else{
             grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_USER"  ));
         }
-        if(user.getEmail()=="rumeysaaydin49@gmail.com"&& user.getPassword()=="123456"){
-            grantedAuthorities .add(new SimpleGrantedAuthority("ROLE_YONETICI"));
-        }
+        //if(user.getEmail()=="rumeysaaydin49@gmail.com"&& user.getPassword()=="123456"){
+         //   grantedAuthorities .add(new SimpleGrantedAuthority("ROLE_YONETICI"));
+        //}
 
         return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword() , grantedAuthorities);
 
