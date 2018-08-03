@@ -26,15 +26,19 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet();
 
+
+
         if(user.isValid()){
             grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_ADMIN"  ));
         }
         else{
             grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_USER"  ));
         }
-
-
+        if(user.getEmail()=="rumeysaaydin49@gmail.com"&& user.getPassword()=="123456"){
+            grantedAuthorities .add(new SimpleGrantedAuthority("ROLE_YONETICI"));
+        }
 
         return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword() , grantedAuthorities);
+
     }
 }

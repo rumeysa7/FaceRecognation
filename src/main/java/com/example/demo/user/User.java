@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 
 @Entity
-@Table(name = "Alien")
-public class User {
+    @Table(name = "Alien")
+    public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
