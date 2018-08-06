@@ -21,11 +21,24 @@
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
+
+
         <ul class="nav navbar-nav">
             <li><a href="${contextPath}/welcome">Ana Sayfa</a></li>
             <li><a href="${contextPath}/addAlien">Kayıt Ol</a></li>
             <li><a href="${contextPath}/lists">Listele</a></li>
         </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+
+                <a onclick="document.forms['logoutForm'].submit()"><span class="glyphicon glyphicon-log-out"></span>Çıkış Yap</a>
+            </c:if>
+        </ul>
+
     </div>
 </nav>
 

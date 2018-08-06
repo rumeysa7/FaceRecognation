@@ -36,8 +36,8 @@
                 <td>${listValue.lastname}</td>
                 <td>${listValue.email}</td>
                 <td>${listValue.password}</td>
-                <td><button class="btn btn-danger" onclick="this.disabled= true; location.href='${contextPath}/profile/${listValue.getid()}/delete'">Delete</button></td>
-                <td><input type="button" class="btn btn-success" value="Profil" onclick="location.href='${contextPath}/profile/${listValue.getid()}'" ><br></td>
+                <td><button class="btn btn-danger" onclick="this.disabled= true; location.href='${contextPath}/profile/${listValue.getid()}/delete'">Kaydı Sil</button></td>
+                <td><input type="button" class="btn btn-success" value="Görüntüle" onclick="location.href='${contextPath}/profile/${listValue.getid()}'" ><br></td>
             </tr>
         </c:forEach>
     </ul>

@@ -18,14 +18,16 @@
 
 <table align="center">
 
-    <tr href="/:${contextPath}/profile/${user.getid()}">
-        <br><td>${user.getid()}</td></br>
-        <br><td>${user.username}</td></br>
-        <br><td>${user.lastname}</td></br>
-        <br><td>${user.email}</td></br>
-
     <div align="center">
-        <img alt="img" src="data:image/jpg;base64,${foto}" width="200" height="200"/><br>
+
+        <tr href="/:${contextPath}/profile/${user.getid()}">
+
+        <br/>ID= ${user.getid()}<br/>
+        <br/>AD= ${user.username}<br/>
+        <br/>SOYAD= ${user.lastname}<br/>
+        <br/>E-MAIL= ${user.email}<br/>
+        <br/><img alt="img" src="data:image/jpg;base64,${foto}" width="200" height="200"/><br>
+
     </div>
 
     </tr>

@@ -20,10 +20,12 @@
 
     <div class="form-group" align="center">
         <div class="form-group">
-            </br>  <input type="text" name="firstname" class="form-control"  placeholder="AD" style="width: 250px" style="height:250px" required="required"></br>
+            </br>  <input type="text" name="firstname" class="form-control" placeholder="AD"
+                          style="width: 250px" style="height:250px"  onchange="javascript:this.value=this.value.toUpperCase();"  required="required"></br>
         </div>
         <div class="form-group">
-            </br>  <input type="text" name="lastname" class="form-control"  placeholder="SOYAD"  style="width: 250px" style="height:250px" required="required"></br>
+            </br>  <input type="text" name="lastname" class="form-control"  placeholder="SOYAD"
+                          style="width: 250px" style="height:250px"   onchange="javascript:this.value=this.value.toUpperCase();"  required="required"></br>
         </div>
         <div class="form-group">
             </br>  <input type="email" name="email" class="form-control"  placeholder="E-MAIL"  style="width: 250px" style="height:250px" required="required"></br>

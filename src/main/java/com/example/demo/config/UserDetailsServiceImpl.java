@@ -30,14 +30,14 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
 
         if(user.isValid()){
-            grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_ADMIN"  ));
-        }
-        else{
             grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_USER"  ));
         }
-        //if(user.getEmail()=="rumeysaaydin49@gmail.com"&& user.getPassword()=="123456"){
-         //   grantedAuthorities .add(new SimpleGrantedAuthority("ROLE_YONETICI"));
-        //}
+        else{
+            grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_GUEST" ));
+        }
+        if(user.getEmail().equalsIgnoreCase("rumeysaaydin49@gmail.com")){
+           grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }
 
         return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword() , grantedAuthorities);
 

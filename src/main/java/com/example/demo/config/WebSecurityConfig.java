@@ -30,8 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/addAlien").permitAll().
                 antMatchers("/orders").permitAll().
                 antMatchers("/welcome").permitAll().
-                antMatchers("/profile/{id}/delete").access("hasRole('ROLE_YONETICI')").
-                //antMatchers("/lists").access("hasRole('ROLE_YONETICI') or hasRole('ROLE_ADMIN')").
+                antMatchers("/profile/{id}/delete").access("hasRole('ROLE_ADMIN')").
+                antMatchers("/lists").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')").
                 anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -46,12 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
         auth.authenticationProvider(authenticationProvider());
-
-        //auth.inMemoryAuthentication()
-               // .withUser("rumeysa").password("123456").roles("ROLE_YONETICI");
-
-
-
 
 }
     public PasswordEncoder passwordEncoder() {
