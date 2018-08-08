@@ -10,27 +10,23 @@
 <%@ include file="header.jsp"%>
 <html>
 <head>
-    <title>Profile</title>
-
-
+    <title>Profil</title>
+    <style>
+        div.center {
+            margin: auto;
+            width: 35%;
+            border: 2px solid #000000;
+            padding: 15px; }
+    </style>
 </head>
 <body>
-
-<table align="center">
-
-    <div align="center">
-
-        <tr href="/:${contextPath}/profile/${user.getid()}">
-
-        <br/>ID= ${user.getid()}<br/>
-        <br/>AD= ${user.username}<br/>
-        <br/>SOYAD= ${user.lastname}<br/>
-        <br/>E-MAIL= ${user.email}<br/>
-        <br/><img alt="img" src="data:image/jpg;base64,${foto}" width="200" height="200"/><br>
-
-    </div>
-
-    </tr>
-</table>
+<div class="center">
+    <img alt="img" src="data:image/jpg;base64,${foto}" width="200" height="200"/><br>
+    <br href="/:${contextPath}/profile/${user.getid()}">
+    <br/>ID: ${user.getid()}<br/>
+    <br/>AD: ${user.username}<br/>
+    <br/>SOYAD: ${user.lastname}<br/>
+    <br/>E-MAİL: ${user.email}<br/>
+</div>
 </body>
 </html>

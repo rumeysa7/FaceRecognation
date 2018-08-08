@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Title</title>
@@ -22,7 +23,9 @@
         <th scope="col">SOYAD</th>
         <th scope="col">E-MAIL</th>
         <th scope="col">SIFRE</th>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
         <th scope="col">SIL</th>
+        </sec:authorize>
         <th scope="col">PROFIL</th>
     </tr>
     </thead>
@@ -36,14 +39,20 @@
                 <td>${listValue.lastname}</td>
                 <td>${listValue.email}</td>
                 <td>${listValue.password}</td>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <td><button class="btn btn-danger" onclick="this.disabled= true; location.href='${contextPath}/profile/${listValue.getid()}/delete'">Kaydı Sil</button></td>
-                <td><input type="button" class="btn btn-success" value="Görüntüle" onclick="location.href='${contextPath}/profile/${listValue.getid()}'" ><br></td>
+                </sec:authorize>
+                <td><input type="button"  id="btnProfile" class="btn btn-success" value="Görüntüle" onclick="location.href='${contextPath}/profile/${listValue.getid()}'" ><br></td>
             </tr>
         </c:forEach>
     </ul>
+
     </tbody>
 </table>
 
 </c:if>
+
+
+
 </body>
 </html>

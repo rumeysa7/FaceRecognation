@@ -8,7 +8,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -21,12 +21,14 @@
 <div class="container">
 
     <c:if test="${pageContext.request.userPrincipal.name != null}">
-
-        <h2>Hosgeldin ${pageContext.request.userPrincipal.name} </h2>
-
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <h2>Hosgeldin admin ${pageContext.request.userPrincipal.name} </h2>
+        </sec:authorize>
+        <sec:authorize access="hasRole('ROLE_GUEST')">
+        <h2>Hosgeldin guest ${pageContext.request.userPrincipal.name} </h2>
+        </sec:authorize>
 
     </c:if>
-
 </div>
 
 </body>

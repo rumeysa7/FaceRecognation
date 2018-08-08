@@ -39,7 +39,7 @@ public class EmailUtil {
 
             msg.setFrom(new InternetAddress("ruka.testind@gmail.com", "javaTest"));
 
-            msg.setReplyTo(InternetAddress.parse("rumeysaaydin49@gmail.com", false));
+            msg.setReplyTo(InternetAddress.parse("ruka.testind@gmail.com", false));
 
             msg.setSubject(subject, "UTF-8");
 

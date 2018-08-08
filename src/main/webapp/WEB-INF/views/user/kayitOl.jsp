@@ -9,6 +9,11 @@
 <%@ include file="header.jsp"%>
 <html>
 <head>
+
+
+
+
+
     <title>Title</title>
 
 </head>
